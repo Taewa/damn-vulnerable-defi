@@ -3,6 +3,7 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/Address.sol";
+import "hardhat/console.sol";
 
 /**
  * @title FlashLoanReceiver
@@ -26,7 +27,7 @@ contract FlashLoanReceiver {
         require(address(this).balance >= amountToBeRepaid, "Cannot borrow that much");
         
         _executeActionDuringFlashLoan();
-        
+
         // Return funds to pool
         pool.sendValue(amountToBeRepaid);
     }

